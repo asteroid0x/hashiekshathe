@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashi Ekshathe - Home</title>
+
+    <link rel="icon" href="/contents/logos/HE-favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/commonelements.css">
+    <link rel="stylesheet" href="/globalstyles.css">
+    <link rel="stylesheet" href="/indexstyles.css">
+
+    <script src="https://kit.fontawesome.com/f506c6a276.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <a href="/index.html"><img class="HE-large-logo" src="/contents/logos/HE-orange-logo.png" alt="Hashi Ekshathe Logo"></a>
+            <a href="/index.html"><img class="HE-small-logo" src="/contents/logos/HE-white-logo.png" alt="Hashi Ekshathe Logo"></a>
+        </div>
+        <div class="header-buttons">
+            <a href="/store.html"><button class="header-button">Store</button></a>
+            <a href="/volunteer.html"><button class="header-button" id="last-button">Volunteer</button></a>
+            <a href="/donate.html"><button class="header-button" id="last-button">Donate</button></a>
+
+            <button class="menu-button" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="menu" id="menu">
+        <a href="/donate.html">Donate</a>
+        <a href="/volunteer.html">Volunteer</a>
+        <a href="/store.html">Store</a>
+        <a href="#" class="menu-non-hover"></a>
+        <a href="/index.html">Home</a>
+        <a href="/about-us.html">About Us</a>
+        <a href="/records.html">Records</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/teams.html">Teams</a>
+        <a href="/contact-us.html">Contact Us</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+
+    <nav>
+        <div class="navbar">
+            <ul>
+                <li class="active"><a href="/index.html">Home</a></li>
+                <li><a href="/about-us.html">About Us</a></li>
+                <li><a href="/records.html">Records</a></li>
+                <li><a href="/projects.html">Projects</a></li>
+                <li><a href="/gallery.html">Gallery</a></li>
+                <li><a href="/teams.html">Teams</a></li>
+                <li><a href="/contact-us.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="mobile-hero-section">
+        <div class="mobile-slideshow-container">
+            <div class="slide fade">
+                <img src="/contents/1.JPG" alt="Image 1">
+            </div>
+            <div class="slide fade">
+                <img src="/contents/2.jpg" alt="Image 2">
+            </div>
+            <div class="slide fade">
+                <img src="/contents/3.jpg" alt="Image 3">
+            </div>
+            <div class="slide fade">
+                <img src="/contents/4.jpg" alt="Image 4">
+            </div>
+        </div>
+    </section>
+
+    <section class="hero-section">
+        <div class="hero-title">
+            <h1>Student Led
+                Non-Profit Based
+                In Bangladesh.
+            </h1>
+            <p>Hashi Ekshathe primariliy focuses
+                on helping those in desperate
+                need and standing beside them
+                in difficult times.
+            </p>
+            <a href="/donate.html"><button>Donate</button></a>
+        </div>
+
+        <div class="hero-image">
+            <div class="hero-slideshow-container">
+                <div class="slide fade">
+                    <img src="/contents/1.JPG" alt="Image 1">
+                </div>
+                <div class="slide fade">
+                    <img src="/contents/2.jpg" alt="Image 2">
+                </div>
+                <div class="slide fade">
+                    <img src="/contents/3.jpg" alt="Image 3">
+                </div>
+                <div class="slide fade">
+                    <img src="/contents/4.jpg" alt="Image 4">
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <section class="hero-counter">
+        <div class="counter">
+            <h2>Total raised</h2>
+            <h1 id="donation-total">Loading...</h1>
+            <h2>For</h2>
+            <h1 id="project-total">Loading...</h1>
+        </div>
+        <div class="counter-text">
+            <p>There are so many ways you can make a difference! 
+                Whether it's donating financially to support our cause,
+                signing up as a volunteer to lend a helping hand, or
+                simply sharing our mission with others — every action
+                counts! Join us today and help create positive change
+                in the world.
+            </p>
+            <div class="counter-text-button">
+                <a href="/volunteer.html"><button>Volunteer</button></a>
+                <a href="/donate.html"><button id="last-button">Donate</button></a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        async function fetchDonationTotal() {
+            const url = "https://script.google.com/macros/s/AKfycbw4c23AxxR4xd0u-_1-aW77ckQyvclPIwfxp3fDApKq7WdRbeNuYxYILOIQu_3LiF8G/exec"; // Replace with your Web App URL
+    
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                const formattedTotal = Number(data.totalDonations).toLocaleString(); // Format with commas
+                document.getElementById("donation-total").textContent = `${formattedTotal} TK`;
+            } catch (error) {
+                console.error("Error fetching donation total:", error);
+            }
+        }
+    
+        fetchDonationTotal(); // Run function on page load
+    </script>
+
+    <script>
+        async function fetchProjectCount() {
+            const url = "https://script.google.com/macros/s/AKfycbzaVpet0z5SEd1-9XdsPqtGhoogT5duwRK2HM8dRwpFE2opPyfmoXWtgYNxU-JDEnnk/exec"; // Your Web App URL
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                // Assuming the JSON returned has a key 'totalProjects'
+                const projectCount = data.totalProjects;
+
+                // Display the fetched value in the h1 with id 'project-total'
+                document.getElementById("project-total").textContent = `${projectCount} Projects`;
+            } catch (error) {
+                console.error("Error fetching project count:", error);
+                document.getElementById("project-total").textContent = "Failed to load project count";
+            }
+        }
+
+        fetchProjectCount(); // Run function on page load
+    </script>
+
+    <section class="index-about-us-records">
+        <div class="about-us">
+            <h1>About Us</h1>
+            <p>Hashi Ekshathe is a student-led non-profit organization 
+                based in Bangladesh. Our mission is to help those in
+                desperate need and stand beside them in difficult times.
+                We believe that every action counts, and that together,
+                we can make a difference in the world
+            </p>
+            <a href="/about-us.html"><button>Learn More</button></a>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="records">
+            <h1>Records</h1>
+            <p>We believe in transparency and accountability. That's why
+                we keep detailed records of all our projects and financial
+                transactions. You can view our digital records to see
+                exactly how your donations are being used to help those
+                in need.
+            </p>
+            <a href="/records.html"><button>View Records</button></a>
+        </div>
+    </section>
+
+    <section class="index-projects">
+        <div>
+            <h1>Projects</h1>
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Project cards will be loaded dynamically here -->
+            </div>
+            <p>At Hashi Ekshathe, we believe that real change happens through action.
+                Our projects focus on providing immediate relief and building sustainable
+                solutions for those who need it most. Whether it’s supporting families in
+                crisis, funding education, or bringing vital resources to underserved
+                communities, every initiative is a step toward a brighter future.
+                Join us in making a difference—one project, one life, one community
+                at a time.
+            </p>
+            <a href="/projects.html"><button>View Projects</button></a>
+        </div>
+    </section>
+
+    <script>
+        const projectsSheetURL = 'https://opensheet.elk.sh/1YYSeIhn3RDXK2xUc7DwPmFT0BX8R__fR2R2OHNzEgl0/Sheet1'; // Your Google Sheet ID
+        
+        async function fetchProjects() {
+            try {
+                const response = await fetch(projectsSheetURL);
+                const data = await response.json();
+                const grid = document.getElementById("projectsGrid");
+    
+                console.log("Fetched Data:", data);
+    
+                // Limit to the last 6 entries (most recent) and reverse them
+                const latestData = data.slice(-6).reverse();  // This limits the entries to the last 6 and reverses them
+    
+                latestData.forEach(project => {
+                    const { "Project Name": projectName, "Image URL": imageURL, "Link": projectLink, "Location": location } = project;
+                    let imgSrc = imageURL ? imageURL.trim() : 'https://via.placeholder.com/300';
+    
+                    // Handle Google Drive link conversion to a direct image URL
+                    if (imgSrc.includes("drive.google.com")) {
+                        let fileId = imgSrc.match(/[-\w]{25,}/)?.[0]; // Extracts File ID from Google Drive link
+                        imgSrc = fileId ? `https://lh3.googleusercontent.com/d/${fileId}=w500` : imgSrc;
+                    }
+    
+                    const projectCard = document.createElement("div");
+                    projectCard.className = "project-card";
+    
+                    // Wrapping both the image and project name with a link
+                    const projectLinkElement = document.createElement("a");
+                    projectLinkElement.href = projectLink;  // The link from the "Link" column in Google Sheets
+                    projectLinkElement.target = "_blank";   // Open link in a new tab
+    
+                    projectLinkElement.innerHTML = `
+                        <img src="${imgSrc}" alt="${projectName}" 
+                             onerror="this.onerror=null; this.src='https://via.placeholder.com/300';">
+                        <h2>${projectName}</h2>
+                        <p>${location}</p> <!-- Add location under project name -->
+                    `;
+    
+                    projectCard.appendChild(projectLinkElement);
+                    grid.appendChild(projectCard);
+                });
+            } catch (error) {
+                console.error("Error fetching projects:", error);
+            }
+        }
+    
+        fetchProjects();
+    </script>
+    
+    
+    
+    
+    
+
+    <section class="index-gallery">
+        <div>
+            <h1>Gallery</h1>
+            
+            <div class="store-image">
+                <img src="/contents/store images/gallery-hero-image.png" alt="Store Image">
+            </div>
+
+            <p>A picture speaks a thousand words, and every image in our gallery tells a story of hope, resilience,
+                and change. From on-the-ground relief efforts to community-driven initiatives, our photos showcase
+                the lives we touch and the progress we make together. Explore our gallery and witness the power
+                of collective action in bringing smiles and support to those in need.
+            </p>
+            <a href="/gallery.html"><button>View Gallery</button></a>
+        </div>
+    </section>
+
+    <section class="index-store">
+        <div>
+            <h1>Store</h1>
+            <div class="store-image">
+                <img src="/contents/store images/store-image.png" alt="Store Image">
+            </div>
+            <p>At Hashi Ekshathe, every item in our store is more than just merchandise—it's a symbol of support
+                for those in need. When you purchase our items, 100% of the proceeds go directly to funding our
+                charity projects. From clothing to accessories, each item you buy helps us continue our mission
+                of making a positive impact in the lives of those who need it most.
+            </p>
+            <a href="/store.html"><button>Visit Store</button></a>
+        <div>
+    </section>
+
+    <section class="index-teams">
+        <div>
+            <h1>Teams</h1>
+
+            <!-- Team Showcase: Dynamic grid -->
+            <div class="team-showcase" id="members-grid">
+                <!-- Team members will be loaded dynamically here -->
+            </div>
+
+            <p>At Hashi Ekshathe, we’re a dedicated group of individuals united by a common goal—to make the world
+                a better place. Our team is made up of passionate volunteers, leaders, and change-makers who work
+                tirelessly to bring hope and support to those in need. Every member brings their unique skills
+                and heart to our mission, and together, we are stronger.
+            </p>
+            <a href="/teams.html"><button>View Teams</button></a>
+        </div>
+    </section>
+
+    <script>
+        const apiUrl = "https://opensheet.elk.sh/1ad1H89ioroAmsgSD1Uhcr5LYIwDxaV40EB9I66k0xHI/Sheet1"; // Your Sheet ID
+        
+        // Change this number to set how many entries to display
+        const numberOfEntries = 8// <-- This is where you can change 'n' (number of entries to fetch)
+
+        async function loadMembers() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                const grid = document.getElementById("members-grid");
+                grid.innerHTML = ""; // Clear previous content
+
+                console.log("Fetched Data from Google Sheets:", data);
+
+                // Limit the number of entries to 'n'
+                const limitedData = data.slice(0, numberOfEntries); // <-- Limits to the first 'n' entries
+
+                limitedData.forEach(member => {
+                    const { Name, Role, "Image URL": ImageURL } = member;
+                    let imageUrl = ImageURL ? ImageURL.trim() : "https://via.placeholder.com/150";
+
+                    // Convert Google Drive links to direct image links
+                    if (imageUrl.includes("drive.google.com")) {
+                        let fileId = imageUrl.match(/[-\w]{25,}/)?.[0]; // Extracts File ID
+                        imageUrl = fileId ? `https://lh3.googleusercontent.com/d/${fileId}=w500` : imageUrl;
+                    }
+
+                    console.log(`Final Image URL for ${Name}: ${imageUrl}`);
+
+                    const memberCard = document.createElement("div");
+                    memberCard.className = "team-box";
+                    memberCard.innerHTML = `
+                        <img src="${imageUrl}" alt="${Name}" 
+                             onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
+                        <h2>${Name}</h2>
+                        <p>${Role}</p>
+                    `;
+                    grid.appendChild(memberCard);
+                });
+            } catch (error) {
+                console.error("Error loading members:", error);
+            }
+        }
+
+        window.onload = loadMembers;
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <section class="index-contact-us">
+        <h1>Contact Us</h1>
+            <div class="contact-container">
+                <div class="contact">
+                    <h2>Get In Touch</h2>
+                    <p>Reach Out to Us via Email. One of our correspondents will respond to you as soon as possible.
+                    </p>
+
+                    <p>Mail</p>
+                    <input type="text" placeholder="someone@example.com">
+
+                    <p>Message</p>
+                    <textarea name="" id=""></textarea>
+                    <div>
+                        <a href="#"><button>Send Message</button></a>
+                        <a href="/contact-us.html"><button id="last-button">More Options</button></a>
+                    </div>
+                </div>
+
+                <div class="line"></div>
+
+                <div class="social-links">
+                    <h2>Social Links</h2>
+                    <div>
+                            <a href="#"><p>www.facebook.com</p></a>
+                            <a href="#"><p>www.twitter.com</p></a>
+                            <a href="#"><p>www.instagram.com</p></a>
+                            <a href="#"><p>www.linkedin.com</p></a>
+                            <a href="#"><p>www.youtube.com</p></a>
+                    </div>
+                </div>
+            </div>
+   </section>
+
+    <footer>
+        <div class="footer">
+            <img src="/contents/logos/HE-white-logo.png" alt="Hashi Ekshathe Logo">
+            <div class="footer-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="footer-icons-last"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-contact">
+
+            <h1>Contact Us</h1>
+            <p>E-mail: hashiekshathe@gmail.com</p>
+            <p>Principal Branch of Hashi Ekshathe: Dhaka</p>
+
+            <div class="footer-contact-input">
+                <input type="text" placeholder="someone@example.com">
+                <button>Subscribe</button>
+            </div>
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-trademark">
+            <p>&copy; 2025 Hashi Ekshathe. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+    
+</body>
+</html>

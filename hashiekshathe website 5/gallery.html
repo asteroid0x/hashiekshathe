@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashi Ekshathe - Gallery</title>
+
+    <link rel="icon" href="/contents/logos/HE-favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/commonelements.css">
+    <link rel="stylesheet" href="/globalstyles.css">
+    <link rel="stylesheet" href="/indexstyles.css">
+    <link rel="stylesheet" href="store-styles.css">
+    <link rel="stylesheet" href="pages-one-styles.css">
+
+    <script src="https://kit.fontawesome.com/f506c6a276.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <a href="/index.html"><img class="HE-large-logo" src="/contents/logos/HE-orange-logo.png" alt="Hashi Ekshathe Logo"></a>
+            <a href="/index.html"><img class="HE-small-logo" src="/contents/logos/HE-white-logo.png" alt="Hashi Ekshathe Logo"></a>
+        </div>
+        <div class="header-buttons">
+            <a href="/store.html"><button class="header-button">Store</button></a>
+            <a href="/volunteer.html"><button class="header-button" id="last-button">Volunteer</button></a>
+            <a href="/donate.html"><button class="header-button" id="last-button">Donate</button></a>
+
+            <button class="menu-button" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="menu" id="menu">
+        <a href="/donate.html">Donate</a>
+        <a href="/volunteer.html">Volunteer</a>
+        <a href="/store.html">Store</a>
+        <a href="#" class="menu-non-hover"></a>
+        <a href="/index.html">Home</a>
+        <a href="/about-us.html">About Us</a>
+        <a href="/records.html">Records</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/teams.html">Teams</a>
+        <a href="/contact-us.html">Contact Us</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+
+    <nav>
+        <div class="navbar">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/about-us.html">About Us</a></li>
+                <li><a href="/records.html">Records</a></li>
+                <li><a href="/projects.html">Projects</a></li>
+                <li class="active"><a href="/gallery.html">Gallery</a></li>
+                <li><a href="/teams.html">Teams</a></li>
+                <li><a href="/contact-us.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <section class="gallery">
+        <h1>Gallery</h1>
+        <h2>A Glimpse Into Our Journey</h2>
+        <p>At Hashi Ekshathe, every project, every act of kindness, and every milestone is a
+            step toward a better tomorrow. Our gallery is a visual testament to the work we
+            do—helping communities, uplifting lives, and standing together in times of need.
+            Browse through our collection of moments captured from the field and see how your
+            support is making a real difference.
+        </p>
+            <a href=""><button>View Google Drive</button></a>
+        <div class="gallery-container" id="galleryGrid"></div>
+    </section>
+
+    <script>
+        const sheetUrl = 'https://opensheet.elk.sh/14llGXb7J4di8AYA9CWoSTl66RhTSAOdalWEQ12VuEco/Sheet1'; // Replace YOUR_SHEET_ID
+
+        async function fetchGalleryImages() {
+            try {
+                const response = await fetch(sheetUrl);
+                let images = await response.json();
+
+                console.log("Fetched Gallery Data:", images);
+
+                // Reverse order so latest images come first
+                images.reverse();
+
+                const galleryGrid = document.getElementById("galleryGrid");
+                galleryGrid.innerHTML = "";
+
+                images.forEach(entry => {
+                    let imageUrl = entry["Image URL"].trim();
+
+                    // Convert Google Drive links to direct links
+                    if (imageUrl.includes("drive.google.com")) {
+                        const fileId = imageUrl.match(/id=([^&]+)/)?.[1] || imageUrl.split("/d/")[1]?.split("/")[0];
+                        imageUrl = `https://lh3.googleusercontent.com/d/${fileId}=w500`;
+                    }
+
+                    console.log(`Final Image URL: ${imageUrl}`);
+
+                    const imgElement = document.createElement("img");
+                    imgElement.src = imageUrl;
+                    imgElement.alt = "Gallery Image";
+                    imgElement.onerror = () => imgElement.src = "https://via.placeholder.com/200"; // Fallback image
+
+                    galleryGrid.appendChild(imgElement);
+                });
+            } catch (error) {
+                console.error("Error loading gallery images:", error);
+            }
+        }
+
+        fetchGalleryImages();
+    </script>
+
+    <footer>
+        <div class="footer">
+            <img src="/contents/logos/HE-white-logo.png" alt="Hashi Ekshathe Logo">
+            <div class="footer-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="footer-icons-last"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-contact">
+
+            <h1>Contact Us</h1>
+            <p>E-mail: hashiekshathe@gmail.com</p>
+            <p>Principal Branch of Hashi Ekshathe: Dhaka</p>
+
+            <div class="footer-contact-input">
+                <input type="text" placeholder="someone@example.com">
+                <button>Subscribe</button>
+            </div>
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-trademark">
+            <p>&copy; 2025 Hashi Ekshathe. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+
+
+</body>
+</html>

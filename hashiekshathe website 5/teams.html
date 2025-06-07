@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashi Ekshathe - Teams</title>
+
+    <link rel="icon" href="/contents/logos/HE-favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/commonelements.css">
+    <link rel="stylesheet" href="/globalstyles.css">
+    <link rel="stylesheet" href="/indexstyles.css">
+    <link rel="stylesheet" href="store-styles.css">
+    <link rel="stylesheet" href="pages-one-styles.css">
+
+    <script src="https://kit.fontawesome.com/f506c6a276.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <a href="/index.html"><img class="HE-large-logo" src="/contents/logos/HE-orange-logo.png" alt="Hashi Ekshathe Logo"></a>
+            <a href="/index.html"><img class="HE-small-logo" src="/contents/logos/HE-white-logo.png" alt="Hashi Ekshathe Logo"></a>
+        </div>
+        <div class="header-buttons">
+            <a href="/store.html"><button class="header-button">Store</button></a>
+            <a href="/volunteer.html"><button class="header-button" id="last-button">Volunteer</button></a>
+            <a href="/donate.html"><button class="header-button" id="last-button">Donate</button></a>
+
+            <button class="menu-button" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="menu" id="menu">
+        <a href="/donate.html">Donate</a>
+        <a href="/volunteer.html">Volunteer</a>
+        <a href="/store.html">Store</a>
+        <a href="#" class="menu-non-hover"></a>
+        <a href="/index.html">Home</a>
+        <a href="/about-us.html">About Us</a>
+        <a href="/records.html">Records</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/teams.html">Teams</a>
+        <a href="/contact-us.html">Contact Us</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+
+    <nav>
+        <div class="navbar">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/about-us.html">About Us</a></li>
+                <li><a href="/records.html">Records</a></li>
+                <li><a href="/projects.html">Projects</a></li>
+                <li><a href="/gallery.html">Gallery</a></li>
+                <li class="active"><a href="/teams.html">Teams</a></li>
+                <li><a href="/contact-us.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="index-teams">
+        <div>
+            <h1>Teams</h1>
+            <h2>The Heart of Our Mission: Meet Our Team</h2>
+            <p>Behind every successful project and initiative is a team that believes in the power
+                of community. Meet the dedicated individuals who are driving our efforts forward.
+                From planning and fundraising to hands-on support in the field, each team member
+                plays a crucial role in transforming lives and making a difference. Get to know
+                the people who make it all happen and join us in creating lasting change.
+            </p>
+            <a href="https://docs.google.com/spreadsheets/d/1ad1H89ioroAmsgSD1Uhcr5LYIwDxaV40EB9I66k0xHI/edit?gid=0#gid=0"><button>View Members List</button></a>
+
+            <!-- Team Showcase: Dynamic grid -->
+            <div class="team-showcase" id="members-grid">
+                <!-- Team members will be loaded dynamically here -->
+            </div>
+
+
+        </div>
+    </section>
+
+    <script>
+        const apiUrl = "https://opensheet.elk.sh/1ad1H89ioroAmsgSD1Uhcr5LYIwDxaV40EB9I66k0xHI/Sheet1"; // Your Sheet ID
+
+        async function loadMembers() {
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                const grid = document.getElementById("members-grid");
+                grid.innerHTML = ""; // Clear previous content
+
+                console.log("Fetched Data from Google Sheets:", data);
+
+                data.forEach(member => {
+                    const { Name, Role, "Image URL": ImageURL } = member;
+                    let imageUrl = ImageURL ? ImageURL.trim() : "https://via.placeholder.com/150";
+
+                    // Convert Google Drive links to direct image links
+                    if (imageUrl.includes("drive.google.com")) {
+                        let fileId = imageUrl.match(/[-\w]{25,}/)?.[0]; // Extracts File ID
+                        imageUrl = fileId ? `https://lh3.googleusercontent.com/d/${fileId}=w500` : imageUrl;
+                    }
+
+                    console.log(`Final Image URL for ${Name}: ${imageUrl}`);
+
+                    const memberCard = document.createElement("div");
+                    memberCard.className = "team-box";
+                    memberCard.innerHTML = `
+                        <img src="${imageUrl}" alt="${Name}" 
+                             onerror="this.onerror=null; this.src='https://via.placeholder.com/150';">
+                        <h2>${Name}</h2>
+                        <p>${Role}</p>
+                    `;
+                    grid.appendChild(memberCard);
+                });
+            } catch (error) {
+                console.error("Error loading members:", error);
+            }
+        }
+
+        window.onload = loadMembers;
+    </script>
+
+    <footer>
+        <div class="footer">
+            <img src="/contents/logos/HE-white-logo.png" alt="Hashi Ekshathe Logo">
+            <div class="footer-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="footer-icons-last"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-contact">
+
+            <h1>Contact Us</h1>
+            <p>E-mail: hashiekshathe@gmail.com</p>
+            <p>Principal Branch of Hashi Ekshathe: Dhaka</p>
+
+            <div class="footer-contact-input">
+                <input type="text" placeholder="someone@example.com">
+                <button>Subscribe</button>
+            </div>
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-trademark">
+            <p>&copy; 2025 Hashi Ekshathe. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+
+</body>
+</html>

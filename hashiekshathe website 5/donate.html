@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashi Ekshathe - Donate</title>
+
+    <link rel="icon" href="/contents/logos/HE-favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/commonelements.css">
+    <link rel="stylesheet" href="/globalstyles.css">
+    <link rel="stylesheet" href="/indexstyles.css">
+    <link rel="stylesheet" href="store-styles.css">
+    <link rel="stylesheet" href="pages-one-styles.css">
+
+    <script src="https://kit.fontawesome.com/f506c6a276.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <a href="/index.html"><img class="HE-large-logo" src="/contents/logos/HE-orange-logo.png" alt="Hashi Ekshathe Logo"></a>
+            <a href="/index.html"><img class="HE-small-logo" src="/contents/logos/HE-white-logo.png" alt="Hashi Ekshathe Logo"></a>
+        </div>
+        <div class="header-buttons">
+            <a href="/store.html"><button class="header-button">Store</button></a>
+            <a href="/volunteer.html"><button class="header-button" id="last-button">Volunteer</button></a>
+            <a href="/donate.html"><button class="header-button" id="last-button">Donate</button></a>
+
+            <button class="menu-button" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="menu" id="menu">
+        <a href="/donate.html">Donate</a>
+        <a href="/volunteer.html">Volunteer</a>
+        <a href="/store.html">Store</a>
+        <a href="#" class="menu-non-hover"></a>
+        <a href="/index.html">Home</a>
+        <a href="/about-us.html">About Us</a>
+        <a href="/records.html">Records</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/teams.html">Teams</a>
+        <a href="/contact-us.html">Contact Us</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+
+    <nav>
+        <div class="navbar">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/about-us.html">About Us</a></li>
+                <li><a href="/records.html">Records</a></li>
+                <li><a href="/projects.html">Projects</a></li>
+                <li><a href="/gallery.html">Gallery</a></li>
+                <li><a href="/teams.html">Teams</a></li>
+                <li><a href="/contact-us.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="donate">
+        <div>
+            <h1>Donate To Hashi Ekshathe</h1>
+            <h2>Your Generosity Makes a Difference</h2>
+            <p>At Hashi Ekshathe, your donation is more than just a gift—it's a lifeline. Every contribution,
+                big or small, goes directly toward supporting our projects and providing aid to those in
+                desperate need. Join us in creating lasting change and empowering communities to thrive.
+                Your kindness today can help build a better tomorrow.
+            </p>
+            
+            <h2 class="warning">OUR DONATION SERVICE VIA WEBSITE IS CURRENTLY UNAVAILABLE
+                (YOU CAN STILL DONATE VIA MOBILE BANKING. DETAILS ARE GIVEN IN OUR SOCIAL MEDIA OUTLETS)
+            </h2>
+            <a href="https://docs.google.com/spreadsheets/d/1SIgCAMpZhHtNM3p0HgKjO3-9Lsk6KUiyc2Zn7Lya9qM/edit?gid=803396454#gid=803396454"><button>Open Donation Log</button></a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer">
+            <img src="/contents/logos/HE-white-logo.png" alt="Hashi Ekshathe Logo">
+            <div class="footer-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="footer-icons-last"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-contact">
+
+            <h1>Contact Us</h1>
+            <p>E-mail: hashiekshathe@gmail.com</p>
+            <p>Principal Branch of Hashi Ekshathe: Dhaka</p>
+
+            <div class="footer-contact-input">
+                <input type="text" placeholder="someone@example.com">
+                <button>Subscribe</button>
+            </div>
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-trademark">
+            <p>&copy; 2025 Hashi Ekshathe. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+
+
+</body>
+</html>

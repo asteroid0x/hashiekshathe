@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    padding: 0;
+    margin: 0;
+    background: #EAEADA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+/*----------------------------------------------------------------------------*/
+h1 {
+    color: #221E1F;
+    font-size: 48px;
+    font-weight: 500;
+}
+h2 {
+    color: #221E1F;
+    font-size: 32px;
+    font-weight: 400;
+}
+p {
+    color: #221E1F;
+    font-size: 24px;
+    font-weight: 400;
+}
+/*----------------------------------------------------------------------------*/
+body li {
+    list-style: none;
+}
+body a {
+    text-decoration: none;
+    color: #221E1F;
+}
+/*----------------------------------------------------------------------------*/
+button {
+    font-size: 24px;
+    padding: 10px 30px;
+    background-color: #F0562D;
+    color: #EAEADA;
+    border-radius: 50px;
+    border: 1px transparent;
+}
+button:hover {
+    border: 1px #F0562D;
+    background-color: #EAEADA;
+    color: #F0562D;
+}
+#last-button {
+    margin-left: 15px;
+}
+/*----------------------------------------------------------------------------*/
+section {
+    margin-top: 50px;
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+}
+footer {
+    margin-top: 50px;
+}
+p, button {
+    margin-top: 30px;
+}
+/*----------------------------------------------------------------------------*/
+@media screen and (max-width: 1200px) {
+    section {
+        width: 90%;
+    }
+    h1 {
+        font-size: 48px;
+    }
+    h2 {
+        font-size: 32px;
+    }
+    p {
+        font-size: 24px;
+    }
+    button {
+        font-size: 24px;
+    }
+    section, footer {
+        margin-top: 50px;
+    }
+    p, button {
+        margin-top: 25px;
+    }
+}
+@media screen and (max-width: 1000px) {
+    h1 {
+        font-size: 44px;
+    }
+    h2 {
+        font-size: 30px;
+    }
+    p {
+        font-size: 22px;
+    }
+    button {
+        font-size: 22px;
+    }
+    section, footer {
+        margin-top: 40px;
+    }}
+@media screen and (max-width: 750px) {
+    h1 {
+        font-size: 40px;
+    }
+    h2 {
+        font-size: 28px;
+    }
+    p {
+        font-size: 20px;
+    }
+    button {
+        font-size: 22px;
+    }
+    section, footer {
+        margin-top: 30px;
+    }}
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 32px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    p {
+        font-size: 16px;
+    }
+    button {
+        font-size: 16px;
+    }
+    section, footer {
+        margin-top: 20px;
+    }
+    p, button {
+        margin-top: 15px;
+    }}
+/*----------------------------------------------------------------------------*/
+

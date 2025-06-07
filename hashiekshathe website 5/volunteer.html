@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashi Ekshathe - Volunteer</title>
+
+    <link rel="icon" href="/contents/logos/HE-favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/commonelements.css">
+    <link rel="stylesheet" href="/globalstyles.css">
+    <link rel="stylesheet" href="/indexstyles.css">
+    <link rel="stylesheet" href="store-styles.css">
+    <link rel="stylesheet" href="pages-one-styles.css">
+
+    <script src="https://kit.fontawesome.com/f506c6a276.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <a href="/index.html"><img class="HE-large-logo" src="/contents/logos/HE-orange-logo.png" alt="Hashi Ekshathe Logo"></a>
+            <a href="/index.html"><img class="HE-small-logo" src="/contents/logos/HE-white-logo.png" alt="Hashi Ekshathe Logo"></a>
+        </div>
+        <div class="header-buttons">
+            <a href="/store.html"><button class="header-button">Store</button></a>
+            <a href="/volunteer.html"><button class="header-button" id="last-button">Volunteer</button></a>
+            <a href="/donate.html"><button class="header-button" id="last-button">Donate</button></a>
+
+            <button class="menu-button" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="menu" id="menu">
+        <a href="/donate.html">Donate</a>
+        <a href="/volunteer.html">Volunteer</a>
+        <a href="/store.html">Store</a>
+        <a href="#" class="menu-non-hover"></a>
+        <a href="/index.html">Home</a>
+        <a href="/about-us.html">About Us</a>
+        <a href="/records.html">Records</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/teams.html">Teams</a>
+        <a href="/contact-us.html">Contact Us</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+
+    <nav>
+        <div class="navbar">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/about-us.html">About Us</a></li>
+                <li><a href="/records.html">Records</a></li>
+                <li><a href="/projects.html">Projects</a></li>
+                <li><a href="/gallery.html">Gallery</a></li>
+                <li><a href="/teams.html">Teams</a></li>
+                <li><a href="/contact-us.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="volunteer">
+        <div>
+            <h1>Volunteer With Hashi Ekshathe</h1>            
+            <h2>Lend a Hand, Change a Life: Volunteer Today</h2>
+            <p>At Hashi Ekshathe, we believe that every person has the power to make a difference.
+                Volunteering isn’t just about giving your time—it’s about being part of something
+                bigger. When you volunteer with us, you’re directly contributing to life-changing
+                projects that bring hope, support, and resources to those who need it most. Whether
+                it’s helping with disaster relief, supporting education programs, or offering your
+                skills to our initiatives, your impact is undeniable.
+            </p>
+            <p>Join our passionate team of volunteers and take the first step toward creating
+                lasting change. Together, we can make a world of difference. Your time, your energy,
+                and your heart can help transform communities and give those in need a chance to thrive.
+                Volunteer with us today and help us build a better tomorrow, one person at a time.
+            </p>
+            <a href="https://forms.gle/dTkyqRSa8VLyQyYq9"><button>Open Form</button></a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer">
+            <img src="/contents/logos/HE-white-logo.png" alt="Hashi Ekshathe Logo">
+            <div class="footer-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="footer-icons-last"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-contact">
+
+            <h1>Contact Us</h1>
+            <p>E-mail: hashiekshathe@gmail.com</p>
+            <p>Principal Branch of Hashi Ekshathe: Dhaka</p>
+
+            <div class="footer-contact-input">
+                <input type="text" placeholder="someone@example.com">
+                <button>Subscribe</button>
+            </div>
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-trademark">
+            <p>&copy; 2025 Hashi Ekshathe. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+
+
+</body>
+</html>

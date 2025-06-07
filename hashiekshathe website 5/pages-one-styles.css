@@ -1,0 +1,40 @@
+h2 {
+    margin-top: 15px;
+}
+@media screen and (max-width: 500px) {
+    .records-buttons #last-button {
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    section.store {
+        width: 90%;
+    }
+}
+
+section.gallery {
+    flex-direction: column;
+}
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    max-width: 1200px;
+    margin-top: 30px;
+}
+.gallery-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+.gallery-container img:hover {
+    transform: scale(1.05);
+}
+@media (max-width: 500px) {
+    .gallery-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

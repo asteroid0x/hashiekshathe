@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hashi Ekshathe - Projects</title>
+
+    <link rel="icon" href="/contents/logos/HE-favicon.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/commonelements.css">
+    <link rel="stylesheet" href="/globalstyles.css">
+    <link rel="stylesheet" href="/indexstyles.css">
+    <link rel="stylesheet" href="store-styles.css">
+    <link rel="stylesheet" href="pages-one-styles.css">
+
+    <script src="https://kit.fontawesome.com/f506c6a276.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-logo">
+            <a href="/index.html"><img class="HE-large-logo" src="/contents/logos/HE-orange-logo.png" alt="Hashi Ekshathe Logo"></a>
+            <a href="/index.html"><img class="HE-small-logo" src="/contents/logos/HE-white-logo.png" alt="Hashi Ekshathe Logo"></a>
+        </div>
+        <div class="header-buttons">
+            <a href="/store.html"><button class="header-button">Store</button></a>
+            <a href="/volunteer.html"><button class="header-button" id="last-button">Volunteer</button></a>
+            <a href="/donate.html"><button class="header-button" id="last-button">Donate</button></a>
+
+            <button class="menu-button" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    
+    <div class="menu" id="menu">
+        <a href="/donate.html">Donate</a>
+        <a href="/volunteer.html">Volunteer</a>
+        <a href="/store.html">Store</a>
+        <a href="#" class="menu-non-hover"></a>
+        <a href="/index.html">Home</a>
+        <a href="/about-us.html">About Us</a>
+        <a href="/records.html">Records</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/teams.html">Teams</a>
+        <a href="/contact-us.html">Contact Us</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('show');
+        }
+    </script>
+
+    <nav>
+        <div class="navbar">
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/about-us.html">About Us</a></li>
+                <li><a href="/records.html">Records</a></li>
+                <li class="active"><a href="/projects.html">Projects</a></li>
+                <li><a href="/gallery.html">Gallery</a></li>
+                <li><a href="/teams.html">Teams</a></li>
+                <li><a href="/contact-us.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="index-projects">
+        <div>
+            <h1>Projects</h1>
+            <h2>Transforming Lives Through Action: Our Commitment to Change</h2>
+
+            <p>Every project we undertake is driven by one goal—creating meaningful,
+                lasting impact. From emergency aid to long-term development programs,
+                we work hand in hand with communities to bring hope where it’s needed
+                most. With a commitment to transparency and accountability, we ensure
+                that every contribution directly supports those in need. Explore our
+                projects and see how together, we can turn compassion into action and
+                dreams into reality.
+            </p>
+            <a href="https://docs.google.com/spreadsheets/d/1YYSeIhn3RDXK2xUc7DwPmFT0BX8R__fR2R2OHNzEgl0/edit?gid=1489805939#gid=1489805939"><button>View Projects</button></a>
+
+            <div class="projects-grid" id="projectsGrid">
+                <!-- Project cards will be loaded dynamically here -->
+            </div>
+
+
+        </div>
+    </section>
+    
+    <script>
+        const projectsSheetURL = 'https://opensheet.elk.sh/1YYSeIhn3RDXK2xUc7DwPmFT0BX8R__fR2R2OHNzEgl0/Sheet1'; // Your Google Sheet ID
+        
+        async function fetchProjects() {
+            try {
+                const response = await fetch(projectsSheetURL);
+                const data = await response.json();
+                const grid = document.getElementById("projectsGrid");
+    
+                console.log("Fetched Data:", data);
+    
+                // Reverse the order of the data array to show the most recent entries at the top
+                data.reverse();
+    
+                data.forEach(project => {
+                    const { "Project Name": projectName, "Image URL": imageURL, "Link": projectLink, "Location": location } = project;
+                    let imgSrc = imageURL ? imageURL.trim() : 'https://via.placeholder.com/300';
+    
+                    // Handle Google Drive link conversion to a direct image URL
+                    if (imgSrc.includes("drive.google.com")) {
+                        let fileId = imgSrc.match(/[-\w]{25,}/)?.[0]; // Extracts File ID from Google Drive link
+                        imgSrc = fileId ? `https://lh3.googleusercontent.com/d/${fileId}=w500` : imgSrc;
+                    }
+    
+                    const projectCard = document.createElement("div");
+                    projectCard.className = "project-card";
+    
+                    // Wrapping both the image and project name with a link
+                    const projectLinkElement = document.createElement("a");
+                    projectLinkElement.href = projectLink;  // The link from the "Link" column in Google Sheets
+                    projectLinkElement.target = "_blank";   // Open link in a new tab
+    
+                    projectLinkElement.innerHTML = `
+                        <img src="${imgSrc}" alt="${projectName}" 
+                             onerror="this.onerror=null; this.src='https://via.placeholder.com/300';">
+                        <h2>${projectName}</h2>
+                        <p>${location}</p> <!-- Displaying the location here -->
+                    `;
+    
+                    projectCard.appendChild(projectLinkElement);
+                    grid.appendChild(projectCard);
+                });
+            } catch (error) {
+                console.error("Error fetching projects:", error);
+            }
+        }
+    
+        fetchProjects();
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+        <div class="footer">
+            <img src="/contents/logos/HE-white-logo.png" alt="Hashi Ekshathe Logo">
+            <div class="footer-icons">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="footer-icons-last"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-contact">
+
+            <h1>Contact Us</h1>
+            <p>E-mail: hashiekshathe@gmail.com</p>
+            <p>Principal Branch of Hashi Ekshathe: Dhaka</p>
+
+            <div class="footer-contact-input">
+                <input type="text" placeholder="someone@example.com">
+                <button>Subscribe</button>
+            </div>
+        </div>
+
+        <div class="footer-line"></div>
+
+        <div class="footer-trademark">
+            <p>&copy; 2025 Hashi Ekshathe. All Rights Reserved.</p>
+        </div>
+
+    </footer>
+
+
+</body>
+</html>
